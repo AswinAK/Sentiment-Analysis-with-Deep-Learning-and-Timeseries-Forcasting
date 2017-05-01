@@ -29,6 +29,8 @@ EPOCHS = 10
 #Function to create a vector that can efficiently represent each review.
 #This function goes over all the reviews, removes stop words and builds a vocabulary of words that are 
 #significant in negative and positive reviews. This is a standard technique used in NLP
+#We select words that occur in atleast 1% of the reviews and that are present in more numbers(double) 
+#in either the positive or negative set of reviews.
 def create_word_vector(pos,neg):
 	stopwords = set(nltk.corpus.stopwords.words('english'))
 	word_vector = set()
@@ -122,6 +124,7 @@ def create_feature_set(pos,neg,test_size):
 
 
 #Neural Network with 4 layers
+#We initialize each nuuron with their weights and biases
 def neural_network_4layers(data):
 	layer_1_params = {'weights': tf.Variable(tf.random_normal([len(train_x[0]), neurons_l1])),
 					  'biases': tf.Variable(tf.random_normal([neurons_l1]))}
@@ -155,6 +158,7 @@ def neural_network_4layers(data):
 	return output
 
 #Neural network with 3 layers
+#We initialize each nuuron with their weights and biases
 def neural_network_3layers(data):
 	layer_1_params = {'weights': tf.Variable(tf.random_normal([len(train_x[0]), neurons_l1])),
 					  'biases': tf.Variable(tf.random_normal([neurons_l1]))}
@@ -183,7 +187,7 @@ def neural_network_3layers(data):
 
 
 #Method to train the neural network
-#EACH epoch is a cylce of feedforward and backpropogation.
+#each epoch is a cylce of feedforward and backpropogation.
 #In feedforward, we pass the input vectors into the network and compare the output with the expected output.
 #In the backpropogation stage, the optimiser adjusts the weights in each neuron to get the desired output
 #The optimiser used here is the AdamOptimizer and to calculate the error we use the softmax cross entrophy measure

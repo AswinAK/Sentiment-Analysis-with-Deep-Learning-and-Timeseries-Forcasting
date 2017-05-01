@@ -7,8 +7,8 @@ import pprint
 import csv
 import sys
 
-yelp_file_business = "/Users/AswinAk/Downloads/yelp_dataset_challenge_round9/yelp_academic_dataset_business.json"
-yelp_review_file = "/Users/AswinAk/Downloads/yelp_dataset_challenge_round9/yelp_academic_dataset_review.json"
+yelp_file_business = "yelp_academic_dataset_business.json"
+yelp_review_file = "yelp_academic_dataset_review.json"
 targetCategory = 'Restaurants' #Type of business to look for
 max_reviews = 2500 #Number of reviews required in each of positive and negative categories 
 yelp_similar_businesses = []

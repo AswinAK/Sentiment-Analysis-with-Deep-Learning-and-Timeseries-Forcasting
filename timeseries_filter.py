@@ -12,12 +12,13 @@ MAX_RATING = 2
 BEGIN_YEAR = 2009
 output_file_name = "timeseries.txt"
 
-yelp_file_business = "/Users/AswinAk/Downloads/yelp_dataset_challenge_round9/yelp_academic_dataset_business.json"
-yelp_review_file = "/Users/AswinAk/Downloads/yelp_dataset_challenge_round9/yelp_academic_dataset_review.json"
+yelp_file_business = "yelp_academic_dataset_business.json"
+yelp_review_file = "yelp_academic_dataset_review.json"
 
 yelp_similar_businesses = []
 target_business_object = None
 
+#Method to create labels for each month/hear
 def getTag(year, month):
   month_label = None
   if month == 1:
@@ -82,7 +83,7 @@ def generateTimeSeries():
   print 'second highest number of businesses in ', ss[-2][0]
   print 'total no of businesses: ',len(yelp_similar_businesses) 
 
-  #
+  #Now go throgh the review file and find reviews for the given businesses that match our parameters
   review_dict = {}
   review_count = 0
   start_time = time.time()
@@ -126,6 +127,7 @@ def generateTimeSeries():
     outfile_ts.write(str(review_dict[key])+"\n")
   outfile_ts.close()
 
+#MAIN: this code takes approx 20 minutes to run
 if __name__ == '__main__':
   if len(sys.argv) >= 5:
     BEGIN_YEAR = int(sys.argv[1])
